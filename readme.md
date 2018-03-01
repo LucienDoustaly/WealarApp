@@ -10,35 +10,34 @@ These instructions will get you a copy of the project up and running on your loc
 
 What things you need to install the software and how to install them
 
-```
-*NodeJs
-*Ionic
-*Cordova
-```
+* NodeJs
+* Ionic
+* Cordova
+
 
 ### Installing
 
-How to install NodeJs
+#### How to install NodeJs
 
 ```
 https://nodejs.org/en/
 ```
 
-How to install Cordova
+#### How to install Cordova
 
 ```
 Windows : C:\>npm install -g cordova
 Linux : $ sudo npm install -g cordova
 ```
 
-How to install Ionic
+#### How to install Ionic
 
 ```
 Windows :	C:\>npm install -g ionic
 Linux : $ sudo npm install -g ionic
 ```
 
-How to install Cordova and Ionic
+#### How to install Cordova and Ionic
 
 ```
 Windows :	C:\>npm install -g cordova ionic
@@ -47,20 +46,20 @@ Linux : $ sudo npm install -g cordova ionic
 
 ## Ionic
 
-How to create a project
+#### How to create a project
 
 ```
 ionic start myApp tabs|blank|sidemenu|empty
 ```
 
-How to launch it
+#### How to launch it
 
 ```
 cd myApp
 ionic serve -l
 ```
 
-How to create new things
+#### How to create new things
 
 ```
 cd myApp
@@ -82,7 +81,7 @@ touch readme.md
 
 Make sure you are at the root of the project
 
-How to use git
+#### How to use git
 
 ```
 Since root of project:
@@ -93,7 +92,7 @@ Since root of project:
 	To take into account the modifications : git commit -a -m "updated readme"
 ```
 
-How to push your code to git
+#### How to push your code to git
 
 ```
 Since root of project:
@@ -105,7 +104,7 @@ Since root of project:
 	Push your code : git push -u origin master
 ```
 
-Add tags (version)
+#### Add tags (version)
 
 ```
 Since root of project:
