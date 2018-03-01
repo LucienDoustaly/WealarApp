@@ -84,31 +84,25 @@ Make sure you are at the root of the project
 #### How to use git
 
 ```
-Since root of project:
-
-	To have status of file : git status
-	To track file : git add .
-	First commit : git commit -m "Initial commit"
-	To take into account the modifications : git commit -a -m "updated readme"
+To have status of file : git status
+To track file : git add .
+First commit : git commit -m "Initial commit"
+To take into account the modifications : git commit -a -m "updated readme"
 ```
 
 #### How to push your code to git
 
 ```
-Since root of project:
+HTTPS : git remote add origin https://github.com/LucienDoustaly/WealarApp.git
+SSH : git@github.com:LucienDoustaly/WealarApp.git
+How to configure ssh : https://help.github.com/articles/connecting-to-github-with-ssh/
 
-	HTTPS : git remote add origin https://github.com/LucienDoustaly/WealarApp.git
-	SSH : git@github.com:LucienDoustaly/WealarApp.git
-	How to configure ssh : https://help.github.com/articles/connecting-to-github-with-ssh/
-
-	Push your code : git push -u origin master
+Push your code : git push -u origin master
 ```
 
 #### Add tags (version)
 
 ```
-Since root of project:
-
-	git tag v0.1
-	git push origin v0.1
+git tag v0.1
+git push origin v0.1
 ```
