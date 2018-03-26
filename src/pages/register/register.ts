@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController, IonicPage } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
- 
-@IonicPage()
+
 @Component({
   selector: 'page-register',
   templateUrl: 'register.html',

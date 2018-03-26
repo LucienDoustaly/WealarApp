@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController, LoadingController, Loading, IonicPage } from 'ionic-angular';
+import { NavController, AlertController, LoadingController, Loading } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
- 
-@IonicPage()
+import { RegisterPage } from "../register/register";
+import { TabsPage } from "../tabs/tabs";
+
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
@@ -14,14 +15,14 @@ export class LoginPage {
   constructor(private nav: NavController, private auth: AuthServiceProvider, private alertCtrl: AlertController, private loadingCtrl: LoadingController) { }
  
   public createAccount() {
-    this.nav.push('RegisterPage');
+    this.nav.push(RegisterPage);
   }
  
   public login() {
     this.showLoading()
     this.auth.login(this.registerCredentials).subscribe(allowed => {
       if (allowed) {        
-        this.nav.setRoot('HomePage');
+        this.nav.setRoot(TabsPage);
       } else {
         this.showError("Access Denied");
       }
@@ -47,6 +48,6 @@ export class LoginPage {
       subTitle: text,
       buttons: ['OK']
     });
-    alert.present(prompt);
+    alert.present();
   }
 }
