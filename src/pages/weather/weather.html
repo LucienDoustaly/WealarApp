@@ -11,6 +11,22 @@
   </ion-navbar>
 </ion-header>
  
-<ion-content class="weather" padding>
-  <h3>Ici il y aura la météo</h3>
-</ion-content>
+<ion-content class="card-background-page">
+
+  <ion-card *ngIf="todayWeather">
+    <img src="{{ todayWeather.img }}"/>
+    <div class="card-day1">{{ todayWeather.day }}</div>
+    <div class="card-temperature1">{{ todayWeather.temperature }}°C</div>
+    <div class="card-humidity1">{{ todayWeather.humidity }}% d'humidité</div>
+  </ion-card>  
+    
+  <ion-list no-lines *ngFor="let weather of weatherList" value="weather">
+    <ion-card>
+      <img src="{{ weather.img }}"/>
+      <div class="card-day">{{ weather.day }}</div>
+      <div class="card-temperature">{{ weather.temperature }}°C</div>
+      <div class="card-humidity">{{ weather.humidity }}% d'humidité</div>
+      </ion-card>
+  </ion-list>
+    
+  </ion-content>

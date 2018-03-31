@@ -9,11 +9,15 @@ import { WeatherPage } from '../pages/weather/weather';
 import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
+import { SettingsPage } from '../pages/settings/settings';
+import { WeatherDetailsPage } from '../pages/weather-details/weather-details';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { HttpClientModule } from '@angular/common/http';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
-
+import { DataProvider } from '../providers/data/data';
+import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
   declarations: [
@@ -23,10 +27,14 @@ import { AuthServiceProvider } from '../providers/auth-service/auth-service';
     WeatherPage,
     TabsPage,
     LoginPage,
-    RegisterPage
+    RegisterPage,
+    SettingsPage,
+    WeatherDetailsPage
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
+    IonicStorageModule.forRoot(),
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -37,13 +45,16 @@ import { AuthServiceProvider } from '../providers/auth-service/auth-service';
     WeatherPage,
     TabsPage,
     LoginPage,
-    RegisterPage
+    RegisterPage,
+    SettingsPage,
+    WeatherDetailsPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AuthServiceProvider
+    AuthServiceProvider,
+    DataProvider
   ]
 })
 export class AppModule {}

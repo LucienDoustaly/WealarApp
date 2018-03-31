@@ -1,22 +1,41 @@
 import { Component } from '@angular/core';
-import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
-import { LoginPage } from '../login/login';
-import {App} from 'ionic-angular';
+import { NavController } from 'ionic-angular';
+import { DataProvider } from '../../providers/data/data';
+import 'rxjs/add/operator/map';
+import { LoadingController, Loading } from 'ionic-angular';
 
 @Component({
-  selector: 'page-weather',
+  selector: 'page-eather',
   templateUrl: 'weather.html'
 })
 export class WeatherPage {
-  
-  constructor(private auth: AuthServiceProvider, private app: App) {
 
-  }
+  loading:Loading;
+  weatherList: any;
+  todayWeather: any;
 
-  public logout() {
-    this.auth.logout().subscribe(succ => {
-      this.app.getRootNav().setRoot(LoginPage);
+  constructor(public navCtrl: NavController, public dataProvider: DataProvider, private loadingCtrl: LoadingController) {
+    this.dataProvider.getWeatherList().subscribe(data => {
+      this.weatherList = data.weather;
+      this.todayWeather = this.weatherList[0];
+      this.weatherList = this.weatherList.slice(1);
+      console.log('weatherList',this.weatherList);
+      console.log('todayWeather',this.todayWeather);
     });
   }
 
+  ionViewWillEnter(){
+    this.showLoading();
+  }
+
+  showLoading() {
+    this.loading = this.loadingCtrl.create({
+      content: 'Please wait...',
+    });
+    this.loading.present();
+
+  setTimeout(() => {
+    this.loading.dismiss();
+  }, 1000);
+  }
 }

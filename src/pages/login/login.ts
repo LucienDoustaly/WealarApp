@@ -10,7 +10,7 @@ import { TabsPage } from "../tabs/tabs";
 })
 export class LoginPage {
   loading: Loading;
-  registerCredentials = { email: '', password: '' };
+  registerCredentials = { email: 'email', password: 'pass' };
  
   constructor(private nav: NavController, private auth: AuthServiceProvider, private alertCtrl: AlertController, private loadingCtrl: LoadingController) { }
  
