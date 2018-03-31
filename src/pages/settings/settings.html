@@ -3,14 +3,49 @@
     <ion-title>
       Settings
     </ion-title>
-    <ion-buttons end>
-      <button ion-button (click)="logout()">
-        <ion-icon name="power"></ion-icon>
-      </button>
-    </ion-buttons>
   </ion-navbar>
 </ion-header>
- 
-<ion-content class="settings" padding>
-  <h3>Ici il y aura les settings</h3>
+
+
+<ion-content class="card-background-page">
+  <ion-card>
+    <ion-card-header>
+      {{ username }} <br/>
+      {{ email }}
+    </ion-card-header>
+  
+    <ion-list>
+      <button ion-item (click)="goToPresence()">
+        <ion-icon name="alert" item-start></ion-icon>
+        Presence Detector Sensibility 
+      </button>
+  
+      <button ion-item>
+        <ion-icon name="chatbubbles" item-start></ion-icon>
+        Receive Information by SMS 
+      </button>
+  
+      <button ion-item>
+        <ion-icon name="notifications" item-start></ion-icon>
+        Weather Notifications 
+      </button>
+  
+      <button ion-item>
+        <ion-icon name="body" item-start></ion-icon>
+        Presence Notifications
+      </button>
+  
+    </ion-list>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-content>
+      <ion-buttons>
+        <button ion-button (click)="logout()">
+          <ion-icon name="power"></ion-icon>
+        </button>
+      </ion-buttons>
+      <h2>SE DÉCONNECTER</h2>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

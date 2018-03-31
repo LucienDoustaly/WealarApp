@@ -3,11 +3,6 @@
     <ion-title>
       Weather
     </ion-title>
-    <ion-buttons end>
-      <button ion-button (click)="logout()">
-        <ion-icon name="power"></ion-icon>
-      </button>
-    </ion-buttons>
   </ion-navbar>
 </ion-header>
  
@@ -15,18 +10,19 @@
 
   <ion-card *ngIf="todayWeather">
     <img src="{{ todayWeather.img }}"/>
-    <div class="card-day1">{{ todayWeather.day }}</div>
-    <div class="card-temperature1">{{ todayWeather.temperature }}°C</div>
-    <div class="card-humidity1">{{ todayWeather.humidity }}% d'humidité</div>
+    <div class="card-day">{{ todayWeather.day }}</div>
+    <div class="card-temperature">{{ todayWeather.temperature }}°C</div>
+    <div class="card-humidity">{{ todayWeather.humidity }}% d'humidité</div>
   </ion-card>  
     
-  <ion-list no-lines *ngFor="let weather of weatherList" value="weather">
+  <ion-list no-lines *ngFor="let weather of weatherList" value="weather" class="list">
     <ion-card>
-      <img src="{{ weather.img }}"/>
-      <div class="card-day">{{ weather.day }}</div>
-      <div class="card-temperature">{{ weather.temperature }}°C</div>
-      <div class="card-humidity">{{ weather.humidity }}% d'humidité</div>
-      </ion-card>
+        <button ion-item>
+            <ion-icon *ngIf="weather.humidity>=75" name="sunny" item-start></ion-icon>
+            {{ weather.day }} {{ weather.temperature }}°C {{ weather.humidity }}% d'humidité
+            <ion-icon *ngIf="weather.humidity<75" name="cloud" item-start></ion-icon>
+        </button>
+    </ion-card>
   </ion-list>
-    
+
   </ion-content>

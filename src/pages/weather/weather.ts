@@ -24,18 +24,4 @@ export class WeatherPage {
     });
   }
 
-  ionViewWillEnter(){
-    this.showLoading();
-  }
-
-  showLoading() {
-    this.loading = this.loadingCtrl.create({
-      content: 'Please wait...',
-    });
-    this.loading.present();
-
-  setTimeout(() => {
-    this.loading.dismiss();
-  }, 1000);
-  }
 }
