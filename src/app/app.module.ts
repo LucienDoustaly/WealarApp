@@ -11,6 +11,9 @@ import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { SettingsPage } from '../pages/settings/settings';
 import { WeatherDetailsPage } from '../pages/weather-details/weather-details';
+import { SettingsSensibilityPage } from '../pages/settings-sensibility/settings-sensibility';
+import { SettingsSmsPage } from '../pages/settings-sms/settings-sms';
+import { SettingsWeatherPage } from '../pages/settings-weather/settings-weather';
 import { SettingsPresencePage } from '../pages/settings-presence/settings-presence';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -31,6 +34,9 @@ import { IonicStorageModule } from '@ionic/storage';
     RegisterPage,
     SettingsPage,
     WeatherDetailsPage,
+    SettingsSensibilityPage,
+    SettingsSmsPage,
+    SettingsWeatherPage,
     SettingsPresencePage
   ],
   imports: [
@@ -50,6 +56,9 @@ import { IonicStorageModule } from '@ionic/storage';
     RegisterPage,
     SettingsPage,
     WeatherDetailsPage,
+    SettingsSensibilityPage,
+    SettingsSmsPage,
+    SettingsWeatherPage,
     SettingsPresencePage
   ],
   providers: [

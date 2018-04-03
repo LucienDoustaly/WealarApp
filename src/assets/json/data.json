@@ -1,7 +1,7 @@
 {
     "weather" : [
         {
-            "img": "https://ionicframework.com/dist/preview-app/www/assets/img/card-sf.png",
+            "img": "assets/imgs/sanfrancisco.png",
             "temperature": 18,
             "humidity": 75,
             "day":"vendredi"

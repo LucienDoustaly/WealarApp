@@ -3,7 +3,10 @@ import { NavController } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { LoginPage } from '../login/login';
 import { App } from 'ionic-angular';
-import { SettingsPresencePage } from '../settings-presence/settings-presence'
+import { SettingsSensibilityPage } from '../settings-sensibility/settings-sensibility';
+import { SettingsSmsPage } from '../settings-sms/settings-sms';
+import { SettingsWeatherPage } from '../settings-weather/settings-weather';
+import { SettingsPresencePage } from '../settings-presence/settings-presence';
 
 @Component({
   selector: 'page-settings',
@@ -24,8 +27,23 @@ export class SettingsPage {
     });
   }
 
-  goToPresence() {
+  goToSensibility() {
     console.log("Go to Presence");
+    this.navCtrl.push(SettingsSensibilityPage);
+  }
+
+  goToSms() {
+    console.log("Go to Sms");
+    this.navCtrl.push(SettingsSmsPage);
+  }
+
+  goToWeather() {
+    console.log("Go to weather");
+    this.navCtrl.push(SettingsWeatherPage);
+  }
+
+  goToPresence() {
+    console.log("Go to presence");
     this.navCtrl.push(SettingsPresencePage);
   }
 }

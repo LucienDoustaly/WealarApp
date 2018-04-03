@@ -10,42 +10,36 @@
 <ion-content class="card-background-page">
   <ion-card>
     <ion-card-header>
-      {{ username }} <br/>
-      {{ email }}
+      {{ username }}
+      <br/> {{ email }}
     </ion-card-header>
-  
+
     <ion-list>
-      <button ion-item (click)="goToPresence()">
+      <button ion-item (click)="goToSensibility()">
         <ion-icon name="alert" item-start></ion-icon>
-        Presence Detector Sensibility 
+        Presence Detector Sensibility
       </button>
-  
-      <button ion-item>
+
+      <button ion-item (click)="goToSms()">
         <ion-icon name="chatbubbles" item-start></ion-icon>
-        Receive Information by SMS 
+        Receive Information by SMS
       </button>
-  
-      <button ion-item>
+
+      <button ion-item (click)="goToWeather()">
         <ion-icon name="notifications" item-start></ion-icon>
-        Weather Notifications 
+        Weather Notifications
       </button>
-  
-      <button ion-item>
+
+      <button ion-item (click)="goToPresence()">
         <ion-icon name="body" item-start></ion-icon>
         Presence Notifications
       </button>
-  
+
     </ion-list>
   </ion-card>
 
-  <ion-card>
-    <ion-card-content>
-      <ion-buttons>
-        <button ion-button (click)="logout()">
-          <ion-icon name="power"></ion-icon>
-        </button>
-      </ion-buttons>
-      <h2>SE DÉCONNECTER</h2>
-    </ion-card-content>
-  </ion-card>
+
+  <ion-footer>
+    <button ion-button color="danger" class="disconnect-button" (click)="logout()">SE DÉCONNECTER</button>
+  </ion-footer>
 </ion-content>
