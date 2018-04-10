@@ -15,6 +15,8 @@ import { SettingsSensibilityPage } from '../pages/settings-sensibility/settings-
 import { SettingsSmsPage } from '../pages/settings-sms/settings-sms';
 import { SettingsWeatherPage } from '../pages/settings-weather/settings-weather';
 import { SettingsPresencePage } from '../pages/settings-presence/settings-presence';
+import { SettingsAccountPage } from '../pages/settings-account/settings-account';
+import { ChangePasswordPage } from '../pages/change-password/change-password';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -37,7 +39,9 @@ import { IonicStorageModule } from '@ionic/storage';
     SettingsSensibilityPage,
     SettingsSmsPage,
     SettingsWeatherPage,
-    SettingsPresencePage
+    SettingsPresencePage,
+    SettingsAccountPage,
+    ChangePasswordPage
   ],
   imports: [
     BrowserModule,
@@ -59,7 +63,9 @@ import { IonicStorageModule } from '@ionic/storage';
     SettingsSensibilityPage,
     SettingsSmsPage,
     SettingsWeatherPage,
-    SettingsPresencePage
+    SettingsPresencePage,
+    SettingsAccountPage,
+    ChangePasswordPage
   ],
   providers: [
     StatusBar,

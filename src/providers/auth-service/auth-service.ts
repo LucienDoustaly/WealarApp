@@ -41,6 +41,18 @@ export class AuthServiceProvider {
       });
     }
   }
+
+  public changePassword(credentials){
+    if (credentials.password === null && credentials.confirm_password === null) {
+      return Observable.throw("Passwords is not the same");
+    } else {
+      // At this point store the credentials to your backend!
+      return Observable.create(observer => {
+        observer.next(true);
+        observer.complete();
+      });
+    }
+  }
  
   public getUserInfo() : User {
     return this.currentUser;

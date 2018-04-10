@@ -7,6 +7,7 @@ import { SettingsSensibilityPage } from '../settings-sensibility/settings-sensib
 import { SettingsSmsPage } from '../settings-sms/settings-sms';
 import { SettingsWeatherPage } from '../settings-weather/settings-weather';
 import { SettingsPresencePage } from '../settings-presence/settings-presence';
+import { SettingsAccountPage } from '../settings-account/settings-account';
 
 @Component({
   selector: 'page-settings',
@@ -45,5 +46,10 @@ export class SettingsPage {
   goToPresence() {
     console.log("Go to presence");
     this.navCtrl.push(SettingsPresencePage);
+  }
+
+  goToAccount() {
+    console.log("Go to account");
+    this.navCtrl.push(SettingsAccountPage);
   }
 }

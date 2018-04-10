@@ -10,8 +10,11 @@
 <ion-content class="card-background-page">
   <ion-card>
     <ion-card-header>
-      {{ username }}
-      <br/> {{ email }}
+      <button ion-item (click)='goToAccount()'>
+        <ion-icon name="contact" item-start></ion-icon>
+        {{ username }}
+        <br/> {{ email }}
+      </button>
     </ion-card-header>
 
     <ion-list>
