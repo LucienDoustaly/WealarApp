@@ -17,6 +17,7 @@ import 'rxjs/add/observable/of';
 export class DataProvider {
 
   weatherData: any;
+  loginData: any;
 
   constructor(public http: HttpClient, private storage: Storage) {
     console.log('Hello DataProvider Provider');
@@ -27,7 +28,30 @@ export class DataProvider {
       if(this.weatherData.length == 0){
         return Observable.fromPromise(this.storage.get("weatherData")).mergeMap((val:any) => {
           if(val == null || val.weather == null){
-            return this.http.get("assets/json/data.json").pipe(
+            return this.http.get("assets/json/weather.json").pipe(
+                tap( res => {
+                  this.weatherData = res.weather;
+                  console.log(this.weatherData);
+               })
+            );
+          }
+          else {
+            this.weatherData = val.weather;
+            return Observable.of({weather: this.weatherData});
+          }
+        }
+      );
+      }
+      else {
+        return Observable.of({weather: this.weatherData});
+      }
+    }
+
+    getLoginData(): Observable<any>{
+      if(this.weatherData.length == 0){
+        return Observable.fromPromise(this.storage.get("LoginData")).mergeMap((val:any) => {
+          if(val == null || val.weather == null){
+            return this.http.get("assets/json/login.json").pipe(
                 tap( res => {
                   this.weatherData = res.weather;
                   console.log(this.weatherData);
