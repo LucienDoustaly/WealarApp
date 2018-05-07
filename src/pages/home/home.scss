@@ -1,5 +1,39 @@
-page-home {
-    .home {
-      background: #3c3c33;
-    }
-  }
+.card-background-page {
+
+  background: #3c3c33;
+
+ion-card {
+  position: relative;
+  text-align: center;
+}
+
+.card-day {
+  position: absolute;
+  top: 36%;
+  font-size: 3.0em;
+  width: 100%;
+  font-weight: bold;
+  color: #fff;
+}
+
+.card-temperature {
+  font-size: 2.0em;
+  position: absolute;
+  top: 55%;
+  width: 100%;
+  color: #fff;
+}
+
+.card-humidity {
+  font-size: 1.0em;
+  position: absolute;
+  top: 70%;
+  width: 100%;
+  color: #fff;
+}
+
+.list {
+  margin: 0px;
+}
+
+}

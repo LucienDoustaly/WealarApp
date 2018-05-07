@@ -1,24 +1,23 @@
 import { Component } from '@angular/core';
-import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
-import { LoginPage } from '../login/login';
-import {App} from 'ionic-angular';
+import { NavController } from 'ionic-angular';
+import { DataProvider } from '../../providers/data/data';
+import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-  username = '';
-  email = '';
-  constructor(private auth: AuthServiceProvider, private app: App) {
-    let info = this.auth.getUserInfo();
-    this.username = info['name'];
-    this.email = info['email'];
-  }
- 
-  public logout() {
-    this.auth.logout().subscribe(succ => {
-      this.app.getRootNav().setRoot(LoginPage);
+  weatherList: any;
+  todayWeather: any;
+
+  constructor(public navCtrl: NavController, public dataProvider: DataProvider) {
+    this.dataProvider.getWeatherList().subscribe(data => {
+      this.weatherList = data.weather;
+      this.todayWeather = this.weatherList[0];
+      this.weatherList = this.weatherList.slice(1);
+      console.log('weatherList',this.weatherList);
+      console.log('todayWeather',this.todayWeather);
     });
   }
 }

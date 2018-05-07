@@ -22,11 +22,6 @@
         </ion-col>
       </ion-row>
 
-      <ion-item class='remember' no-lines>
-        <ion-label>Remember Login</ion-label>
-        <ion-checkbox [(ngModel)]="registerCredentials.remember" [ngModelOptions]="{standalone: true}" (ionChange)="rememberLogin()"></ion-checkbox>
-      </ion-item>
-
       <ion-row>
         <ion-col class="signup-col">
           <button ion-button class="submit-btn" full type="submit" [disabled]="!registerForm.form.valid">Login</button>

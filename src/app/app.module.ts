@@ -5,7 +5,6 @@ import { MyApp } from './app.component';
 
 import { HomePage } from '../pages/home/home';
 import { AlarmPage } from '../pages/alarm/alarm';
-import { WeatherPage } from '../pages/weather/weather';
 import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
@@ -30,7 +29,6 @@ import { IonicStorageModule } from '@ionic/storage';
     MyApp,
     HomePage,
     AlarmPage,
-    WeatherPage,
     TabsPage,
     LoginPage,
     RegisterPage,
@@ -54,7 +52,6 @@ import { IonicStorageModule } from '@ionic/storage';
     HomePage,
     MyApp,
     AlarmPage,
-    WeatherPage,
     TabsPage,
     LoginPage,
     RegisterPage,
