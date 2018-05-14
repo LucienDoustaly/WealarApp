@@ -10,7 +10,7 @@ import { TabsPage } from "../tabs/tabs";
 })
 export class LoginPage {
   loading: Loading;
-  registerCredentials = { email: 'email', password: 'pass', remember: false};
+  registerCredentials = { email: 'email', password: 'pass'};
  
   constructor(private nav: NavController, private auth: AuthServiceProvider, private alertCtrl: AlertController, private loadingCtrl: LoadingController) { }
  
@@ -49,9 +49,5 @@ export class LoginPage {
       buttons: ['OK']
     });
     alert.present();
-  }
-
-  rememberLogin(){
-
   }
 }

@@ -14,12 +14,17 @@ import { SettingsAccountPage } from '../settings-account/settings-account';
   templateUrl: 'settings.html'
 })
 export class SettingsPage {
-  username = '';
-  email = '';
+  
+  userCredentials = { username: '', useremail: '' };
+
   constructor(public navCtrl: NavController, private auth: AuthServiceProvider, private app: App) {
+
+  }
+
+  ionViewWillEnter() {
     let info = this.auth.getUserInfo();
-    this.username = info['name'];
-    this.email = info['email'];
+    this.userCredentials.username = info['name'];
+    this.userCredentials.useremail = info['email'];
   }
 
   public logout() {

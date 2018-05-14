@@ -10,6 +10,11 @@ export class User {
     this.name = name;
     this.email = email;
   }
+
+  set(name: string, email: string){
+    this.name = name;
+    this.email = email;
+  }
 }
  
 @Injectable()
@@ -40,6 +45,15 @@ export class AuthServiceProvider {
         observer.complete();
       });
     }
+  }
+
+  public changeInformation(credentials){
+    return Observable.create(observer => {
+      this.currentUser.set(credentials.username, credentials.useremail);
+      console.log("Info user",this.currentUser.name);
+      observer.next(true);
+      observer.complete();
+    });
   }
 
   public changePassword(credentials){

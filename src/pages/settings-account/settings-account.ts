@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {NavController, NavParams } from 'ionic-angular';
 import { ChangePasswordPage } from '../change-password/change-password';
+import { ChangeInformationsPage } from '../change-informations/change-informations';
 
 @Component({
   selector: 'page-settings-account',
@@ -13,6 +14,11 @@ export class SettingsAccountPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SettingsAccountPage');
+  }
+
+  goToChangeInformations() {
+    console.log("Go to Change information");
+    this.navCtrl.push(ChangeInformationsPage);
   }
 
   goToChangePassword() {
