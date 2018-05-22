@@ -62,7 +62,6 @@ export class AuthServiceProvider {
           .subscribe(
             (val) => {
               this.httpOptions.headers = this.httpOptions.headers.set('Authorization', 'Bearer '+val.data.Token);
-              this.settingsProvider.httpOptions = this.httpOptions;
               this.currentUser = new User(val.data.UserName, val.data.WEALARID);
               this.settingsProvider.sendPresenceMode(val.data.Preferences.presenceNotification);
               this.settingsProvider.sendSmsMode(val.data.Preferences.smsNotification);
