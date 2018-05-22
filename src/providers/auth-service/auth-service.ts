@@ -62,11 +62,12 @@ export class AuthServiceProvider {
           .subscribe(
             (val) => {
               this.httpOptions.headers = this.httpOptions.headers.set('Authorization', 'Bearer '+val.data.Token);
+              this.settingsProvider.setHeader(this.httpOptions);
               this.currentUser = new User(val.data.UserName, val.data.WEALARID);
-              this.settingsProvider.sendPresenceMode(val.data.Preferences.presenceNotification);
-              this.settingsProvider.sendSmsMode(val.data.Preferences.smsNotification);
-              this.settingsProvider.sendWeatherMode(val.data.Preferences.weatherNotification);
-              this.settingsProvider.numberModeToString(val.data.Preferences.securityMode);
+              this.settingsProvider.setPresenceMode(val.data.Preferences.presenceNotification);
+              this.settingsProvider.setSmsMode(val.data.Preferences.smsNotification);
+              this.settingsProvider.setWeatherMode(val.data.Preferences.weatherNotification);
+              this.settingsProvider.setMode(val.data.Preferences.securityMode);
               console.log("Settings Provider MODE",this.settingsProvider.activemode);
               let access = (val.data.Token != null);
               observer.next(access);

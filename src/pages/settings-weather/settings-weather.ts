@@ -18,9 +18,21 @@ export class SettingsWeatherPage {
     console.log('ionViewDidLoad presencePage');
   }
 
-  sendWeatherMode(){
+  setWeatherMode(){
     console.log('weatherNotification:', this.weatherNotification);
-    this.settingsProvider.sendWeatherMode(this.weatherNotification);
+    this.settingsProvider.setNotificationMode(this.settingsProvider.activemode, this.settingsProvider.smsNotification,this.weatherNotification, this.settingsProvider.presenceNotification).subscribe(allowed => {
+      if (allowed) {
+        console.log("Security mode", this.settingsProvider.activemode);
+        console.log("WeatherState",this.settingsProvider.weatherNotification);
+      } else {
+        console.log("Erreur");
+        console.log("Security mode", this.settingsProvider.activemode);
+        console.log("WeatherState",this.settingsProvider.weatherNotification);
+      }
+    },
+      error => {
+        console.log("Erreur",error);
+      });
   }
 
 }

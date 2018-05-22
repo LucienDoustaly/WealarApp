@@ -1,12 +1,14 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class SettingsProvider {
 
   //variable 
     //sensibility
-  activemode: string;
+  activemode: number;
     //sms
   smsNotification: boolean;
     //presence
@@ -14,71 +16,101 @@ export class SettingsProvider {
     //weather
   weatherNotification: boolean;
 
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer '
+    })
+  };
+
   constructor(public http: HttpClient) {
-    console.log('Hello SettingsProvider Provider');
+    console.log('Hello SettingsProvider Provider',this.httpOptions);
   }
   
+   setHeader(header){
+    this.httpOptions = header;
+  }
+
   //Sensibility
-  public getMode() {
+  getMode() {
     return this.activemode;
   }
 
-  public numberModeToString(mode:number){
-    if(mode==0){
-      return this.activemode = "LOW";
-    }
-    if(mode==1){
-      return this.activemode = "MEDIUM";
-    }
-    if(mode==2){
-      return this.activemode = "HIGH";
-    }
+  setMode(activemode){
+    return this.activemode=activemode;
   }
 
-  public stringModeToNumber(mode:string){
+  changeMode(mode:string){
     if(mode=="LOW"){
-      return 0;
+      return this.activemode = 0;
     }
     if(mode=="MEDIUM"){
-      return 1;
+      return this.activemode = 1;
     }
-    if("HIGH"){
-      return 2;
+    if(mode=="HIGH"){
+      return this.activemode = 2;
     }
-  }
-
-  public changeMode(mode:string){
-    return this.activemode = mode;
   }
 
   //Notification
     //sms
-  public getSmsMode(){
+  getSmsMode(){
     return this.smsNotification;
   }
 
-  public sendSmsMode(state){
+  setSmsMode(state){
     console.log('SmsMode State',state);
     this.smsNotification = state;
   }
 
   //presence
-  public getPresenceMode(){
+  getPresenceMode(){
     return this.presenceNotification;
   }
 
-  public sendPresenceMode(state){
+  setPresenceMode(state){
     console.log('PresenceMode State',state);
     this.presenceNotification = state;
   }
 
   //weather
-  public getWeatherMode(){
+  getWeatherMode(){
     return this.weatherNotification;
   }
 
-  public sendWeatherMode(state){
-    console.log('weatherMode State',state);
+  setWeatherMode(state){
+    console.log('weather State',state);
     this.weatherNotification = state;
+  }
+
+  setNotificationMode(security, sms, weather, presence){
+    return Observable.create(observer => {
+      let httpParams = {
+        securityMode: security,
+				smsNotification: sms,
+				weatherNotification: weather,
+				presenceNotification: presence
+      };
+
+      this.http.put("http://localhost:9000/common/user/change/infos/preferences", httpParams, this.httpOptions)
+        .subscribe(
+          (val) => {
+            this.weatherNotification = weather;
+            this.smsNotification = sms;
+            this.activemode = security;
+            this.presenceNotification = presence;
+            observer.next(true);
+            console.log("POST call successful value returned in body",
+              val);
+          },
+          response => {
+            console.log("POST call in error", response);
+            observer.next(false);
+          },
+          () => {
+            console.log("The POST observable is now completed.");
+            observer.complete();
+          });
+    });
   }
 }

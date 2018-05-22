@@ -11,7 +11,7 @@
 
   <ion-card>
     <ion-card-header>
-      MODE ACTIF : {{ activemode }}
+      MODE ACTIF : {{ convertActivemode(activemode) }}
     </ion-card-header>
     <ion-card-content [(ngModel)]="mode">
       <ion-segment color="dark">

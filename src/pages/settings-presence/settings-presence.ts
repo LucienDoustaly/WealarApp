@@ -18,9 +18,19 @@ export class SettingsPresencePage {
     console.log('ionViewDidLoad presencePage');
   }
 
-  sendPresenceMode(){
+  setPresenceMode() {
     console.log('presenceNotification:', this.presenceNotification);
-    this.settingsProvider.sendPresenceMode(this.presenceNotification);
+    this.settingsProvider.setNotificationMode(this.settingsProvider.activemode, this.settingsProvider.smsNotification, this.settingsProvider.weatherNotification, this.presenceNotification).subscribe(allowed => {
+      if (allowed) {
+        console.log("PresenceState", this.settingsProvider.presenceNotification);
+      } else {
+        console.log("Erreur");
+        console.log("PresenceState", this.settingsProvider.presenceNotification);
+      }
+    },
+      error => {
+        console.log("Erreur", error);
+      });
   }
 
 }

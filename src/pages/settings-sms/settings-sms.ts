@@ -18,9 +18,19 @@ export class SettingsSmsPage {
     console.log('ionViewDidLoad SettingsSmsPage');
   }
 
-  sendSmsMode(){
+  setSmsMode(){
     console.log('smsNotification:', this.smsNotification);
-    this.settingsProvider.sendSmsMode(this.smsNotification);
+    this.settingsProvider.setNotificationMode(this.settingsProvider.activemode, this.smsNotification,this.settingsProvider.weatherNotification, this.settingsProvider.presenceNotification).subscribe(allowed => {
+      if (allowed) {
+        console.log("SmsState",this.settingsProvider.smsNotification);
+      } else {
+        console.log("Erreur");
+        console.log("SmsState",this.settingsProvider.smsNotification);
+      }
+    },
+      error => {
+        console.log("Erreur",error);
+      });
   }
 
 }
