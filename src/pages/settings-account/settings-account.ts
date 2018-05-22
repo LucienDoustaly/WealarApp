@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import {NavController, NavParams } from 'ionic-angular';
-import { ChangePasswordPage } from '../change-password/change-password';
 import { ChangeInformationsPage } from '../change-informations/change-informations';
 
 @Component({
@@ -21,8 +20,4 @@ export class SettingsAccountPage {
     this.navCtrl.push(ChangeInformationsPage);
   }
 
-  goToChangePassword() {
-    console.log("Go to Change password");
-    this.navCtrl.push(ChangePasswordPage);
-  }
 }

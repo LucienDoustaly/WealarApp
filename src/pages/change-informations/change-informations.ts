@@ -1,4 +1,3 @@
-import { SettingsPage } from './../settings/settings';
 import { Component } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';

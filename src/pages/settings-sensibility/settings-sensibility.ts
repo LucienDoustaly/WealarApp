@@ -1,23 +1,26 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
+import { SettingsProvider } from '../../providers/settings/settings';
 
 @Component({
   selector: 'page-settings-sensibility',
   templateUrl: 'settings-sensibility.html',
 })
 export class SettingsSensibilityPage {
+  activemode: string;
+  mode: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public settingsProvider: SettingsProvider) {
+    this.mode = this.settingsProvider.getMode();
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SettingssensibilityPage');
+  ionViewWillEnter() {
+    console.log("SettingsProvider activeMode:",this.settingsProvider.activemode);
+    this.activemode=this.settingsProvider.activemode;
+    this.mode=this.settingsProvider.activemode;
   }
 
-  activemode = 'LOW';
-  safari = 'LOW';
-  
   items: any = {
     'LOW': [
       {
@@ -36,12 +39,14 @@ export class SettingsSensibilityPage {
     ]
   };
 
-  getSafariItems(type: any) {
+  getItems(type: any) {
     return this.items[type];
   }
 
   changeMode(mode:string){
-    return this.activemode = mode;
+    this.settingsProvider.changeMode(mode);
+    this.activemode=this.settingsProvider.activemode;
+    console.log("SettingsProvider activeMode:",this.settingsProvider.activemode);
   }
 
   doConfirm(mode:string) {

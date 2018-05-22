@@ -10,39 +10,39 @@ import { TabsPage } from "../tabs/tabs";
 })
 export class LoginPage {
   loading: Loading;
-  registerCredentials = { email: 'email', password: 'pass'};
- 
+  registerCredentials = { username: 'admin', password: 'admin' };
+
   constructor(private nav: NavController, private auth: AuthServiceProvider, private alertCtrl: AlertController, private loadingCtrl: LoadingController) { }
- 
+
   public createAccount() {
     this.nav.push(RegisterPage);
   }
- 
+
   public login() {
-    this.showLoading()
+    this.showLoading('Connection en cours');
     this.auth.login(this.registerCredentials).subscribe(allowed => {
-      if (allowed) {        
+      if (allowed) {
         this.nav.setRoot(TabsPage);
       } else {
-        this.showError("Access Denied");
+        this.showError("Identidiant incorrect");
       }
     },
       error => {
         this.showError(error);
       });
   }
- 
-  showLoading() {
+
+  showLoading(message) {
     this.loading = this.loadingCtrl.create({
-      content: 'Please wait...',
+      content: message,
       dismissOnPageChange: true
     });
     this.loading.present();
   }
- 
+
   showError(text) {
     this.loading.dismiss();
- 
+
     let alert = this.alertCtrl.create({
       title: 'Fail',
       subTitle: text,

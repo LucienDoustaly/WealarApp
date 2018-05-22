@@ -13,7 +13,7 @@
       <button ion-item (click)='goToAccount()'>
         <ion-icon name="contact" item-start></ion-icon>
         {{ userCredentials.username }}
-        <br/> {{ userCredentials.useremail }}
+        <br/> {{ userCredentials.wealarid }}
       </button>
     </ion-card-header>
 
@@ -36,6 +36,18 @@
       <button ion-item (click)="goToPresence()">
         <ion-icon name="body" item-start></ion-icon>
         Presence Notifications
+      </button>
+
+    </ion-list>
+  </ion-card>
+
+  <ion-card>
+
+    <ion-list>
+      
+      <button ion-item (click)='goToChangePassword()'>
+        <ion-icon name="nuclear" item-start></ion-icon>
+        Change password
       </button>
 
     </ion-list>

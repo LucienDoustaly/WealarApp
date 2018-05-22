@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController } from 'ionic-angular';
+import { NavController, AlertController, LoadingController, Loading } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 
 @Component({
@@ -7,45 +7,50 @@ import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
   templateUrl: 'change-password.html',
 })
 export class ChangePasswordPage {
-  changeSuccess = false;
-  passwordCredentials = { password: '', confirm_password: '' };
- 
-  constructor(private nav: NavController, private auth: AuthServiceProvider, private alertCtrl: AlertController) { }
- 
+  loading: Loading;
+  passwordCredentials = { oldpassword:'', password: '', confirm_password: '' };
+
+  constructor(private nav: NavController, private auth: AuthServiceProvider, private alertCtrl: AlertController, private loadingCtrl: LoadingController) { }
+
   public changePassword() {
-    if(this.passwordCredentials.password == this.passwordCredentials.confirm_password){
-      this.auth.changePassword(this.passwordCredentials).subscribe(success => {
-        if (success) {
-          this.changeSuccess = true;
-          this.showPopup("Success", "Password changed.");
+    if (this.passwordCredentials.password == this.passwordCredentials.confirm_password) {
+      this.showLoading('Changement du Mot de passe');
+      this.auth.changePassword(this.passwordCredentials).subscribe(allowed => {
+        if (allowed) {
+          this.showError("Success", "Password changed.");
+          this.passwordCredentials = { oldpassword:'', password: '', confirm_password: '' }
+          this.nav.pop();
         } else {
-          this.showPopup("Error", "Problem change password.");
+          this.showError("Fail","Identidiant incorrect");
+          this.passwordCredentials = { oldpassword:'', password: '', confirm_password: '' }
         }
       },
         error => {
-          this.showPopup("Error", error);
+          this.showError("Fail",error);
         });
     }
-    else{
-      this.showPopup("Error", "Passwords are not the same.");
+    else {
+      this.showError("Fail","Passwords are not the same.");
     }
   }
- 
-  showPopup(title, text) {
+
+  showLoading(message) {
+    this.loading = this.loadingCtrl.create({
+      content: message,
+      dismissOnPageChange: true
+    });
+    this.loading.present();
+  }
+
+  showError(status,text) {
+    this.loading.dismiss();
+
     let alert = this.alertCtrl.create({
-      title: title,
+      title: status,
       subTitle: text,
-      buttons: [
-        {
-          text: 'OK',
-          handler: data => {
-            if (this.changeSuccess) {
-              this.nav.pop();
-            }
-          }
-        }
-      ]
+      buttons: ['OK']
     });
     alert.present();
   }
 }
+

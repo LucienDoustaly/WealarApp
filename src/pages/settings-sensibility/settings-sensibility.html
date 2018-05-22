@@ -13,19 +13,19 @@
     <ion-card-header>
       MODE ACTIF : {{ activemode }}
     </ion-card-header>
-    <ion-card-content>
-      <ion-segment [(ngModel)]="safari" color="dark">
-        <ion-segment-button value="LOW" ng-selected="selected">
+    <ion-card-content [(ngModel)]="mode">
+      <ion-segment color="dark">
+        <ion-segment-button value="LOW">
           LOW
         </ion-segment-button>
-        <ion-segment-button value="MEDIUM">
+        <ion-segment-button value="MEDIUM" ng-selected="selected">
           MEDIUM
         </ion-segment-button>
         <ion-segment-button value="HIGH">
           HIGH
         </ion-segment-button>
       </ion-segment>
-      <ion-list style="margin: 0" inset *ngFor="let sItem of getSafariItems(safari)">
+      <ion-list style="margin: 0" inset *ngFor="let sItem of getItems(mode)">
         <ion-card-content>
           {{ sItem.message }}
         </ion-card-content>
@@ -34,7 +34,7 @@
   </ion-card>
 
   <ion-footer>
-    <button ion-button color="danger" class="choose-button" (click)="doConfirm(safari)">Activer le mode : {{ safari }}</button>
+    <button ion-button color="danger" class="choose-button" (click)="doConfirm(mode)">Activer le mode : {{ mode }}</button>
   </ion-footer>
 
 </ion-content>

@@ -1,5 +1,6 @@
+import { SettingsProvider } from './../../providers/settings/settings';
 import { Component } from '@angular/core';
-import {  NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 
 @Component({
   selector: 'page-settings-weather',
@@ -7,11 +8,19 @@ import {  NavController, NavParams } from 'ionic-angular';
 })
 export class SettingsWeatherPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  weatherNotification: boolean;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public settingsProvider: SettingsProvider) {
+    this.weatherNotification = this.settingsProvider.getWeatherMode();
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad SettingsWeatherPage');
+    console.log('ionViewDidLoad presencePage');
+  }
+
+  sendWeatherMode(){
+    console.log('weatherNotification:', this.weatherNotification);
+    this.settingsProvider.sendWeatherMode(this.weatherNotification);
   }
 
 }

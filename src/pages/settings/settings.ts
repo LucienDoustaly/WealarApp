@@ -8,6 +8,7 @@ import { SettingsSmsPage } from '../settings-sms/settings-sms';
 import { SettingsWeatherPage } from '../settings-weather/settings-weather';
 import { SettingsPresencePage } from '../settings-presence/settings-presence';
 import { SettingsAccountPage } from '../settings-account/settings-account';
+import { ChangePasswordPage } from '../change-password/change-password';
 
 @Component({
   selector: 'page-settings',
@@ -15,7 +16,7 @@ import { SettingsAccountPage } from '../settings-account/settings-account';
 })
 export class SettingsPage {
   
-  userCredentials = { username: '', useremail: '' };
+  userCredentials = { username: '', wealarid: '' };
 
   constructor(public navCtrl: NavController, private auth: AuthServiceProvider, private app: App) {
 
@@ -23,8 +24,8 @@ export class SettingsPage {
 
   ionViewWillEnter() {
     let info = this.auth.getUserInfo();
-    this.userCredentials.username = info['name'];
-    this.userCredentials.useremail = info['email'];
+    this.userCredentials.username = info['username'];
+    this.userCredentials.wealarid = info['wealarid'];
   }
 
   public logout() {
@@ -56,5 +57,10 @@ export class SettingsPage {
   goToAccount() {
     console.log("Go to account");
     this.navCtrl.push(SettingsAccountPage);
+  }
+
+  goToChangePassword() {
+    console.log("Go to Change password");
+    this.navCtrl.push(ChangePasswordPage);
   }
 }
