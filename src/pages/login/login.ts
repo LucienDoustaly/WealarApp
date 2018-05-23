@@ -19,12 +19,12 @@ export class LoginPage {
   }
 
   public login() {
-    this.showLoading('Connection en cours');
+    this.showLoading('Connection attempt');
     this.auth.login(this.registerCredentials).subscribe(allowed => {
       if (allowed) {
         this.nav.setRoot(TabsPage);
       } else {
-        this.showError("Identidiant incorrect");
+        this.showError("Incorrect identifier");
       }
     },
       error => {

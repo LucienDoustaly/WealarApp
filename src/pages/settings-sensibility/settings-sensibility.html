@@ -11,7 +11,7 @@
 
   <ion-card>
     <ion-card-header>
-      MODE ACTIF : {{ convertActivemode(activemode) }}
+      ACTIVE MODE : {{ convertActivemode(activemode) }}
     </ion-card-header>
     <ion-card-content [(ngModel)]="mode">
       <ion-segment color="dark">
@@ -34,7 +34,7 @@
   </ion-card>
 
   <ion-footer>
-    <button ion-button color="danger" class="choose-button" (click)="doConfirm(mode)">Activer le mode : {{ mode }}</button>
+    <button ion-button color="danger" class="choose-button" (click)="doConfirm(mode)">Activate mode : {{ mode }}</button>
   </ion-footer>
 
 </ion-content>

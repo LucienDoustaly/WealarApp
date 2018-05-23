@@ -9,8 +9,30 @@
 <ion-content class="card-background-page">
   <ion-card>
 
-    Information du compte
+    <ion-card-header>
+      Account Informations
+    </ion-card-header>
     
+    <ion-list>
+
+      <div>
+        <strong>USERNAME:</strong>  {{userCredentials.username}}
+      </div>
+
+      <div>
+        <strong>WEALAR_ID</strong> {{userCredentials.wealarid}}
+      </div>
+
+      <div>
+        <strong>PHONE:</strong> {{userCredentials.userphone}}
+      </div>
+
+      <br>
+
+
+
+    </ion-list>
+
   </ion-card>
 
   <ion-card>
@@ -19,7 +41,7 @@
   
         <button ion-item (click)='goToChangeInformations()'>
           <ion-icon name="contact" item-start></ion-icon>
-          Editer mes informations
+          Change informations
         </button>
   
       </ion-list>

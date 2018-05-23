@@ -7,15 +7,18 @@ import 'rxjs/add/operator/map';
 export class User {
   username: string;
   wealarid: string;
+  phone: string;
 
-  constructor(username: string, wealarid: string) {
+  constructor(username: string, wealarid: string, phone: string) {
     this.username = username;
     this.wealarid = wealarid;
+    this.phone = phone;
   }
 
-  set(username: string, wealarid: string) {
+  set(username: string, wealarid: string, phone: string) {
     this.username = username;
     this.wealarid = wealarid;
+    this.phone = phone;
   }
 }
 
@@ -46,6 +49,8 @@ export class AuthServiceProvider {
     })
   };
 
+  token: string;
+
   constructor(private http: HttpClient, private settingsProvider: SettingsProvider) {}
 
   public login(credentials) {
@@ -63,7 +68,7 @@ export class AuthServiceProvider {
             (val) => {
               this.httpOptions.headers = this.httpOptions.headers.set('Authorization', 'Bearer '+val.data.Token);
               this.settingsProvider.setHeader(this.httpOptions);
-              this.currentUser = new User(val.data.UserName, val.data.WEALARID);
+              this.currentUser = new User(val.data.UserName, val.data.WEALARID, val.data.Phone);
               this.settingsProvider.setPresenceMode(val.data.Preferences.presenceNotification);
               this.settingsProvider.setSmsMode(val.data.Preferences.smsNotification);
               this.settingsProvider.setWeatherMode(val.data.Preferences.weatherNotification);
@@ -103,10 +108,27 @@ export class AuthServiceProvider {
 
   public changeInformation(credentials) {
     return Observable.create(observer => {
-      this.currentUser.set(credentials.username, credentials.useremail);
-      console.log("Info user", this.currentUser.username);
-      observer.next(true);
-      observer.complete();
+      let httpParams = {
+        username: credentials.username,
+        phone: credentials.userphone
+      };
+
+      this.http.put("http://localhost:9000/common/user/change/infos/userinfos", httpParams, this.httpOptions)
+        .subscribe(
+          (val) => {
+            this.currentUser.set(credentials.username, this.currentUser.wealarid, credentials.userphone);
+            observer.next(true);
+            console.log("POST call successful value returned in body",
+              val);
+          },
+          response => {
+            console.log("POST call in error", response);
+            observer.next(false);
+          },
+          () => {
+            console.log("The POST observable is now completed.");
+            observer.complete();
+          });
     });
   }
 

@@ -1,7 +1,6 @@
-import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
 
 @Injectable()
 export class SettingsProvider {
@@ -22,13 +21,14 @@ export class SettingsProvider {
       'Authorization': 'Bearer '
     })
   };
-
+  
   constructor(public http: HttpClient) {
     console.log('Hello SettingsProvider Provider',this.httpOptions);
   }
   
-   setHeader(header){
+  public setHeader(header){
     this.httpOptions = header;
+    console.log("Header settingsProvider",this.httpOptions);
   }
 
   //Sensibility

@@ -8,12 +8,12 @@ import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 })
 export class ChangeInformationsPage {
   changeSuccess = false;
-  userCredentials = { username: '', useremail: '' };
+  userCredentials = { username: '', userphone: '' };
 
   constructor(private navCtrl: NavController, private auth: AuthServiceProvider, private alertCtrl: AlertController) {
     let info = this.auth.getUserInfo();
-    this.userCredentials.username = info['name'];
-    this.userCredentials.useremail = info['email'];
+    this.userCredentials.username = info['username'];
+    this.userCredentials.userphone = info['phone'];
   }
 
   public changeInformations() {
