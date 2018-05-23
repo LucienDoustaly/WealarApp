@@ -25,6 +25,8 @@ import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 import { DataProvider } from '../providers/data/data';
 import { IonicStorageModule } from '@ionic/storage';
 import { SettingsProvider } from '../providers/settings/settings';
+import { FirstconnectionPage } from '../pages/firstconnection/firstconnection';
+import { FirstCoChangeInfoPage } from '../pages/first-co-change-info/first-co-change-info';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { SettingsProvider } from '../providers/settings/settings';
     SettingsPresencePage,
     SettingsAccountPage,
     ChangePasswordPage,
-    ChangeInformationsPage
+    ChangeInformationsPage,
+    FirstconnectionPage,
+    FirstCoChangeInfoPage
   ],
   imports: [
     BrowserModule,
@@ -66,7 +70,9 @@ import { SettingsProvider } from '../providers/settings/settings';
     SettingsPresencePage,
     SettingsAccountPage,
     ChangePasswordPage,
-    ChangeInformationsPage
+    ChangeInformationsPage,
+    FirstconnectionPage,
+    FirstCoChangeInfoPage
   ],
   providers: [
     StatusBar,

@@ -41,6 +41,7 @@ interface Response {
 export class AuthServiceProvider {
 
   currentUser: User;
+  password: string;
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -69,6 +70,7 @@ export class AuthServiceProvider {
               this.httpOptions.headers = this.httpOptions.headers.set('Authorization', 'Bearer '+val.data.Token);
               this.settingsProvider.setHeader(this.httpOptions);
               this.currentUser = new User(val.data.UserName, val.data.WEALARID, val.data.Phone);
+              this.password = credentials.password;
               this.settingsProvider.setPresenceMode(val.data.Preferences.presenceNotification);
               this.settingsProvider.setSmsMode(val.data.Preferences.smsNotification);
               this.settingsProvider.setWeatherMode(val.data.Preferences.weatherNotification);
@@ -123,6 +125,36 @@ export class AuthServiceProvider {
           },
           response => {
             console.log("POST call in error", response);
+            observer.next(false);
+          },
+          () => {
+            console.log("The POST observable is now completed.");
+            observer.complete();
+          });
+    });
+  }
+
+  public firstCo(credentials) {
+    return Observable.create(observer => {
+      let httpParams = {
+        username: credentials.username,
+				phone: credentials.userphone,
+				oldPassword: this.password,
+				newPassword: credentials.password
+      };
+
+      this.http.put("http://localhost:9000/common/user/change/infos/firstco", httpParams, this.httpOptions)
+        .subscribe(
+          (val) => {
+            this.currentUser.set(credentials.username, this.currentUser.wealarid, credentials.userphone);
+            observer.next(true);
+            this.password = '';
+            console.log("POST call successful value returned in body",
+              val);
+          },
+          response => {
+            console.log("POST call in error", response);
+            console.log("Credentials", httpParams);
             observer.next(false);
           },
           () => {

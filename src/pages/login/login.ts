@@ -3,6 +3,7 @@ import { NavController, AlertController, LoadingController, Loading } from 'ioni
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { RegisterPage } from "../register/register";
 import { TabsPage } from "../tabs/tabs";
+import { FirstconnectionPage } from "../firstconnection/firstconnection";
 
 @Component({
   selector: 'page-login',
@@ -22,7 +23,11 @@ export class LoginPage {
     this.showLoading('Connection attempt');
     this.auth.login(this.registerCredentials).subscribe(allowed => {
       if (allowed) {
-        this.nav.setRoot(TabsPage);
+        if(this.auth.currentUser.username == 'admin')//this.auth.currentUser.wealarid)
+          this.nav.setRoot(FirstconnectionPage);
+        else
+          this.nav.setRoot(TabsPage);
+        
       } else {
         this.showError("Incorrect identifier");
       }
