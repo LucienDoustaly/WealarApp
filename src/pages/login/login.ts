@@ -23,7 +23,7 @@ export class LoginPage {
     this.showLoading('Connection attempt');
     this.auth.login(this.registerCredentials).subscribe(allowed => {
       if (allowed) {
-        if(this.auth.currentUser.username == 'admin')//this.auth.currentUser.wealarid)
+        if(this.auth.currentUser.username == this.auth.currentUser.wealarid)
           this.nav.setRoot(FirstconnectionPage);
         else
           this.nav.setRoot(TabsPage);

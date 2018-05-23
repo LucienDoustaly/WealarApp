@@ -12,16 +12,22 @@
     <ion-card-header>
       <strong>Account Informations</strong>
     </ion-card-header>
-    
-    <ion-list>
 
-      <div>
-        <strong>USERNAME:</strong>  {{userCredentials.username}}
-      </div>
+    <br>
+
+    <ion-list class='list'>
 
       <div>
         <strong>WEALAR_ID:</strong> {{userCredentials.wealarid}}
       </div>
+
+      <br>
+
+      <div>
+        <strong>USERNAME:</strong> {{userCredentials.username}}
+      </div>
+      
+      <br>
 
       <div>
         <strong>PHONE:</strong> {{userCredentials.userphone}}
@@ -29,21 +35,19 @@
 
       <br>
 
-
-
     </ion-list>
 
   </ion-card>
 
   <ion-card>
 
-      <ion-list>
-  
-        <button ion-item (click)='goToChangeInformations()'>
-          <ion-icon name="contact" item-start></ion-icon>
-          Change informations
-        </button>
-  
-      </ion-list>
-    </ion-card>
+    <ion-list>
+
+      <button ion-item (click)='goToChangeInformations()'>
+        <ion-icon name="contact" item-start></ion-icon>
+        Change informations
+      </button>
+
+    </ion-list>
+  </ion-card>
 </ion-content>

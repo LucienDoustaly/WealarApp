@@ -1,17 +1,30 @@
 <ion-header>
   <ion-navbar color="dark">
     <ion-title>
-      Alarm 
+      Home
     </ion-title>
   </ion-navbar>
 </ion-header>
- 
-<ion-content class="alarm" padding>
-  <h3>Ici il y aura tout sur l'alarme</h3>
 
-  <button ion-button icon-end>
-    Light
-    <ion-icon name="bulb"></ion-icon>
-  </button>
+<ion-content class="card-background-page">
+
+  <ion-card>
+    <img src="assets/imgs/alarmbackg.jpg" />
+    <div class="card-presence">No presence detected</div>
+    <div class="card-datealarm">Since: 22/05/2018</div>
+  </ion-card>
+
+  <ion-list>
+    <ion-card>
+        <button ion-item>
+            <ion-icon name="archive" item-start></ion-icon>
+            Logs
+        </button>
+    </ion-card>
+  </ion-list>
+
+  <ion-footer>
+      <button ion-button color="secondary" class="disconnect-button" (click)="doConfirm()">Alarm STATUS : Activate</button>
+  </ion-footer>
 
 </ion-content>

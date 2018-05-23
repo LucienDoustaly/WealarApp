@@ -70,17 +70,17 @@ export class SettingsSensibilityPage {
 
   doConfirm(mode) {
     let alert = this.alertCtrl.create({
-      title: 'Changer le mode',
-      message: 'Voulez vous changer le mode en '+ mode +'?',
+      title: 'Change the mode',
+      message: 'Are you sure you want to change the mode to: '+ mode +'?',
       buttons: [
         {
-          text: "NON",
+          text: "NO",
           handler: () => {
             console.log('Disagree clicked');
           }
         },
         {
-          text: 'OUI',
+          text: 'YES',
           handler: () => {
             console.log('Agree clicked');
             this.changeMode(mode);
