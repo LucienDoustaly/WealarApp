@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController } from 'ionic-angular';
+import { NavController, AlertController, LoadingController, Loading} from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 
 @Component({
@@ -7,16 +7,18 @@ import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
   templateUrl: 'change-informations.html',
 })
 export class ChangeInformationsPage {
+  loading: Loading;
   changeSuccess = false;
   userCredentials = { username: '', userphone: '' };
 
-  constructor(private navCtrl: NavController, private auth: AuthServiceProvider, private alertCtrl: AlertController) {
+  constructor(private navCtrl: NavController, private auth: AuthServiceProvider, private alertCtrl: AlertController, private loadingCtrl: LoadingController) {
     let info = this.auth.getUserInfo();
     this.userCredentials.username = info['username'];
     this.userCredentials.userphone = info['phone'];
   }
 
   public changeInformations() {
+    this.showLoading("Connexion");
     this.auth.changeInformation(this.userCredentials).subscribe(success => {
       if (success) {
         this.changeSuccess = true;
@@ -30,7 +32,16 @@ export class ChangeInformationsPage {
       });
   }
 
+  showLoading(message) {
+    this.loading = this.loadingCtrl.create({
+      content: message,
+      dismissOnPageChange: true
+    });
+    this.loading.present();
+  }
+
   showPopup(title, text) {
+    this.loading.dismiss();
     let alert = this.alertCtrl.create({
       title: title,
       subTitle: text,

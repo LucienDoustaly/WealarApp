@@ -14,14 +14,14 @@ export class ChangePasswordPage {
 
   public changePassword() {
     if (this.passwordCredentials.password == this.passwordCredentials.confirm_password) {
-      this.showLoading('Changement du Mot de passe');
+      this.showLoading('Changing password');
       this.auth.changePassword(this.passwordCredentials).subscribe(allowed => {
         if (allowed) {
           this.showError("Success", "Password changed.");
           this.passwordCredentials = { oldpassword:'', password: '', confirm_password: '' }
           this.nav.pop();
         } else {
-          this.showError("Fail","Identidiant incorrect");
+          this.showError("Fail","Incorrect password");
           this.passwordCredentials = { oldpassword:'', password: '', confirm_password: '' }
         }
       },
