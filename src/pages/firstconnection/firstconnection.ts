@@ -19,19 +19,19 @@ export class FirstconnectionPage {
 
   slides = [
     {
-      title: "Welcome to the Docs!",
-      description: "The <b>Ionic Component Documentation</b> showcases a number of useful components that are included out of the box with Ionic.",
-      image: "https://ionicframework.com/dist/preview-app/www/assets/img/ica-slidebox-img-1.png",
+      title: "Welcome to the WEALAR APP!",
+      description: "There is your dashboard to remote your wealar system.",
+      image: "assets/imgs/app.png",
     },
     {
-      title: "What is Ionic?",
-      description: "<b>Ionic Framework</b> is an open source SDK that enables developers to build high quality mobile apps with web technologies like HTML, CSS, and JavaScript.",
-      image: "https://ionicframework.com/dist/preview-app/www/assets/img/ica-slidebox-img-2.png",
+      title: "What is Wealar?",
+      description: "<b>Wealar</b> is a remote connected alarm with a weather station which can allow you to get information near your home",
+      image: "assets/img/logo_transparent.png",
     },
     {
-      title: "What is Ionic Cloud?",
-      description: "The <b>Ionic Cloud</b> is a cloud platform for managing and scaling Ionic apps with integrated services like push notifications, native builds, user auth, and live updating.",
-      image: "https://ionicframework.com/dist/preview-app/www/assets/img/ica-slidebox-img-3.png",
+      title: "What is Wealar app?",
+      description: "The <b>wealar application</b> - Powered by Ionic framework - will allow you to remote your wealar alarm anywhere and whenever you want.",
+      image: "assets/imgs/ionic-logo.png",
     }
   ];
 
