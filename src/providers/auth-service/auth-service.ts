@@ -4,6 +4,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
+const url = "https://wealarapi.herokuapp.com/";
+
 export class User {
   username: string;
   wealarid: string;
@@ -64,7 +66,7 @@ export class AuthServiceProvider {
           password: credentials.password
         };
 
-        this.http.post<Response>("http://localhost:9000/public/login", httpParams, this.httpOptions)
+        this.http.post<Response>(url+"/public/login", httpParams, this.httpOptions)
           .subscribe(
             (val) => {
               this.httpOptions.headers = this.httpOptions.headers.set('Authorization', 'Bearer '+val.data.Token);
@@ -115,7 +117,7 @@ export class AuthServiceProvider {
         phone: credentials.userphone
       };
 
-      this.http.put("http://localhost:9000/common/user/change/infos/userinfos", httpParams, this.httpOptions)
+      this.http.put(url+"/common/user/change/infos/userinfos", httpParams, this.httpOptions)
         .subscribe(
           (val) => {
             this.currentUser.set(credentials.username, this.currentUser.wealarid, credentials.userphone);
@@ -143,7 +145,7 @@ export class AuthServiceProvider {
 				newPassword: credentials.password
       };
 
-      this.http.put("http://localhost:9000/common/user/change/infos/firstco", httpParams, this.httpOptions)
+      this.http.put(url+"/common/user/change/infos/firstco", httpParams, this.httpOptions)
         .subscribe(
           (val) => {
             this.currentUser.set(credentials.username, this.currentUser.wealarid, credentials.userphone);
@@ -171,7 +173,7 @@ export class AuthServiceProvider {
           newPassword: credentials.password
         };
 
-        this.http.put<Response>("http://localhost:9000/common/user/change/password", httpParams, this.httpOptions)
+        this.http.put<Response>(url+"/common/user/change/password", httpParams, this.httpOptions)
           .subscribe(
             (val) => {
               observer.next(true);
@@ -196,7 +198,7 @@ export class AuthServiceProvider {
 
   public logout() {
     return Observable.create(observer => {
-      this.http.delete("http://localhost:9000/common/logout", this.httpOptions)
+      this.http.delete(url+"/common/logout", this.httpOptions)
         .subscribe(
           (val) => {
             this.currentUser = null;
