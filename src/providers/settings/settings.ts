@@ -2,8 +2,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
-const url = "https://wealarapi.herokuapp.com/";
-
 @Injectable()
 export class SettingsProvider {
 
@@ -94,7 +92,7 @@ export class SettingsProvider {
 				presenceNotification: presence
       };
 
-      this.http.put(url+"/common/user/change/infos/preferences", httpParams, this.httpOptions)
+      this.http.put("https://wealarapi.herokuapp.com/common/user/change/infos/preferences", httpParams, this.httpOptions)
         .subscribe(
           (val) => {
             this.weatherNotification = weather;
