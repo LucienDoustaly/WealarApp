@@ -29,8 +29,9 @@ export class HomePage {
       //this.weatherList = this.weatherList.slice(1);
       console.log('weatherList',this.weatherList);
       //console.log('todayWeather',this.todayWeather);
+      
+      console.log('DOREFRESH', refresher);
+      refresher.complete();
     });
-    console.log('DOREFRESH', refresher);
-    refresher.complete();
   }
 }

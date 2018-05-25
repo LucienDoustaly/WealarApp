@@ -45,8 +45,9 @@ export class AlarmPage {
       //this.weatherList = this.weatherList.slice(1);
       console.log('alarmInfo',this.alarmInfo);
       //console.log('todayWeather',this.todayWeather);
+      
+      console.log('DOREFRESH', refresher);
+      refresher.complete();
     });
-    console.log('DOREFRESH', refresher);
-    refresher.complete();
   }
 }
