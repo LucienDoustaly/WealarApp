@@ -11,7 +11,7 @@ export class AlarmPage {
 
   constructor(public alertCtrl: AlertController, public dataProvider: DataProvider) {
     this.dataProvider.getAlarmData().subscribe(data => {
-      this.alarmInfo = data.alarm;
+      this.alarmInfo = this.dataProvider.alarmData;
       //this.todayWeather = this.weatherList[0];
       //this.weatherList = this.weatherList.slice(1);
       console.log('alarmInfo',this.alarmInfo);
@@ -40,6 +40,7 @@ export class AlarmPage {
   doRefresh(refresher: Refresher) {
     this.dataProvider.getAlarmData().subscribe(data => {
       this.alarmInfo = data.alarm;
+      
       //this.todayWeather = this.weatherList[0];
       //this.weatherList = this.weatherList.slice(1);
       console.log('alarmInfo',this.alarmInfo);
@@ -47,9 +48,5 @@ export class AlarmPage {
     });
     console.log('DOREFRESH', refresher);
     refresher.complete();
-  }
-
-  doPulling(refresher: Refresher) {
-    console.log('DOPULLING', refresher.progress);
   }
 }

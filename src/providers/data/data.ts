@@ -1,8 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { tap } from 'rxjs/operators'
-import { Storage } from '@ionic/storage';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/observable/fromPromise';
@@ -13,6 +11,27 @@ import 'rxjs/add/observable/of';
   See https://angular.io/guide/dependency-injection for more info on providers
   and Angular DI.
 */
+
+interface Weather{
+  code: number,
+  data: {
+    weather:{
+
+    }
+  },
+  name
+};
+
+interface Alarm{
+  code: number,
+  data: {
+    alarm:{
+
+    }
+  },
+  name
+};
+
 @Injectable()
 export class DataProvider {
 
@@ -26,7 +45,7 @@ export class DataProvider {
     })
   };
   
-  constructor(public http: HttpClient, private storage: Storage) {
+  constructor(public http: HttpClient) {
     console.log('Hello DataProvider Provider');
     this.weatherData = [];
     this.alarmData = [];
@@ -37,48 +56,48 @@ export class DataProvider {
     console.log("Header dataProvider",this.httpOptions);
   }
 
-  getWeatherList(): Observable<any>{
-    if(this.weatherData.length == 0){
-      return Observable.fromPromise(this.storage.get("weatherData")).mergeMap((val:any) => {
-        if(val == null || val.weather == null){
-          return this.http.get("assets/json/weather.json").pipe(
-              tap( res => {
-                this.weatherData = res.weather;
-              })
-          );
-        }
-        else {
-          this.weatherData = val.weather;
-          return Observable.of({weather: this.weatherData});
-        }
-      }
-    );
-    }
-    else {
-      return Observable.of({weather: this.weatherData});
-    }
+  public getWeatherList() {
+    return Observable.create(observer => {
+      this.http.get<Weather>("https://wealarapi.herokuapp.com/data/weather", this.httpOptions)
+        .subscribe(
+          (val) => {
+            this.weatherData = val.data.weather;
+            observer.next(true);
+            console.log("POST call successful value returned in body",
+              val);
+            console.log("WeatherData", this.weatherData);
+          },
+          response => {
+            console.log("POST call in error", response);
+            observer.next(true);
+          },
+          () => {
+            console.log("The POST observable is now completed.");
+            observer.complete();
+          });
+    });
   }
 
-  getAlarmData(): Observable<any>{
-    if(this.alarmData.length == 0){
-      return Observable.fromPromise(this.storage.get("alarmData")).mergeMap((val:any) => {
-        if(val == null || val.alarm == null){
-          return this.http.get("assets/json/alarm.json").pipe(
-              tap( res => {
-                this.alarmData = res.alarm;
-              })
-          );
-        }
-        else {
-          this.alarmData = val.alarm;
-          return Observable.of({alarm: this.alarmData});
-        }
-      }
-    );
-    }
-    else {
-      return Observable.of({alarm: this.alarmData});
-    }
+  public getAlarmData() {
+    return Observable.create(observer => {
+      this.http.get<Alarm>("https://wealarapi.herokuapp.com/data/alarm", this.httpOptions)
+        .subscribe(
+          (val) => {
+            this.alarmData = val.data.alarm;
+            observer.next(true);
+            console.log("POST call successful value returned in body",
+              val);
+            console.log("WeatherData", this.alarmData);
+          },
+          response => {
+            console.log("POST call in error", response);
+            observer.next(true);
+          },
+          () => {
+            console.log("The POST observable is now completed.");
+            observer.complete();
+          });
+    });
   }
 
 }

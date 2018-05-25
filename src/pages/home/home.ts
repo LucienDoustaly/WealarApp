@@ -9,11 +9,12 @@ import 'rxjs/add/operator/map';
 })
 export class HomePage {
   weatherList: any;
+  reponse: any;
   //todayWeather: any;
 
   constructor(public navCtrl: NavController, public dataProvider: DataProvider) {
     this.dataProvider.getWeatherList().subscribe(data => {
-      this.weatherList = data.weather;
+      this.weatherList = this.dataProvider.weatherData;
       //this.todayWeather = this.weatherList[0];
       //this.weatherList = this.weatherList.slice(1);
       console.log('weatherList',this.weatherList);
@@ -23,7 +24,7 @@ export class HomePage {
 
   doRefresh(refresher: Refresher) {
     this.dataProvider.getWeatherList().subscribe(data => {
-      this.weatherList = data.weather;
+      this.weatherList = this.dataProvider.weatherData;
       //this.todayWeather = this.weatherList[0];
       //this.weatherList = this.weatherList.slice(1);
       console.log('weatherList',this.weatherList);
@@ -31,9 +32,5 @@ export class HomePage {
     });
     console.log('DOREFRESH', refresher);
     refresher.complete();
-  }
-
-  doPulling(refresher: Refresher) {
-    console.log('DOPULLING', refresher.progress);
   }
 }
