@@ -23,7 +23,6 @@ export class SettingsProvider {
   };
   
   constructor(public http: HttpClient) {
-    console.log('Hello SettingsProvider Provider',this.httpOptions);
   }
   
   public setHeader(header){

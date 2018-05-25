@@ -6,10 +6,18 @@
     position: relative;
     text-align: center;
   }
+
+  p{
+    text-align: center;
+    padding: 0 40px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #FFF;
+  }
   
   .card-presence {
     position: absolute;
-    top: 20%;
+    top: 10%;
     font-size: 3.0em;
     width: 100%;
     font-weight: bold;
@@ -19,7 +27,7 @@
   .card-datealarm {
     font-size: 2.0em;
     position: absolute;
-    top: 75%;
+    top: 65%;
     width: 100%;
     color: #fff;
   }

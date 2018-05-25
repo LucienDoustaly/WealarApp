@@ -1,39 +1,49 @@
 .card-background-page {
 
-  background: #3c3c33;
+    background: #3c3c33;
 
-ion-card {
-  position: relative;
-  text-align: center;
-}
+    
+  ion-card {
+    position: relative;
+    text-align: center;
+  }
 
-.card-day {
-  position: absolute;
-  top: 36%;
-  font-size: 3.0em;
-  width: 100%;
-  font-weight: bold;
-  color: #fff;
-}
+  .card-center {
+    position: absolute;
+    top: 25%;
+    font-size: 2.0em;
+    width: 100%;
+    font-weight: bold;
+    color: #fff;
+  }
 
-.card-temperature {
-  font-size: 2.0em;
-  position: absolute;
-  top: 55%;
-  width: 100%;
-  color: #fff;
-}
+  .card-day {
+    position: absolute;
+    top: 40%;
+    font-size: 3.0em;
+    width: 100%;
+    font-weight: bold;
+    color: #fff;
+  }
 
-.card-humidity {
-  font-size: 1.0em;
-  position: absolute;
-  top: 70%;
-  width: 100%;
-  color: #fff;
-}
+  .card-date {
+    font-size: 2.0em;
+    position: absolute;
+    top: 60%;
+    width: 100%;
+    color: #fff;
+  }
 
-.list {
-  margin: 0px;
-}
+  .card-value {
+    font-size: 2.0em;
+    position: absolute;
+    top: 55%;
+    width: 100%;
+    color: #fff;
+  }
+
+  .list {
+    margin: 0px;
+  }
 
 }

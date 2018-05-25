@@ -1,22 +1,10 @@
 {
-    "weather" : [
+    "weather" :
         {
-            "img": "assets/imgs/sanfrancisco.png",
             "temperature": 18,
             "humidity": 75,
-            "day":"vendredi"
-        },
-        {
-            "img": "https://ionicframework.com/dist/preview-app/www/assets/img/card-amsterdam.png",
-            "temperature": 16,
-            "humidity": 72,
-            "day":"jeudi"
-        },
-        {
-            "img": "https://ionicframework.com/dist/preview-app/www/assets/img/card-madison.png",
-            "temperature": 17,
-            "humidity": 76,
-            "day":"mercredi"
+            "day":"vendredi",
+            "night": false,
+            "date":"25/05/2018"
         }
-    ]
 }   

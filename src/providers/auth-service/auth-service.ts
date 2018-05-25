@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
+import { DataProvider } from '../data/data';
 
 export class User {
   username: string;
@@ -52,7 +53,7 @@ export class AuthServiceProvider {
 
   token: string;
 
-  constructor(private http: HttpClient, private settingsProvider: SettingsProvider) {}
+  constructor(private http: HttpClient, private settingsProvider: SettingsProvider, private dataProvider: DataProvider) {}
 
   public login(credentials) {
     if (credentials.email === null || credentials.password === null) {
@@ -69,6 +70,8 @@ export class AuthServiceProvider {
             (val) => {
               this.httpOptions.headers = this.httpOptions.headers.set('Authorization', 'Bearer '+val.data.Token);
               this.settingsProvider.setHeader(this.httpOptions);
+              this.dataProvider.setHeader(this.httpOptions);
+
               this.currentUser = new User(val.data.UserName, val.data.WEALARID, val.data.Phone);
               this.password = credentials.password;
               this.settingsProvider.setPresenceMode(val.data.Preferences.presenceNotification);
