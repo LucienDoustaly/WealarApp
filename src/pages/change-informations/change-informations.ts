@@ -22,9 +22,9 @@ export class ChangeInformationsPage {
     this.auth.changeInformation(this.userCredentials).subscribe(success => {
       if (success) {
         this.changeSuccess = true;
-        this.showPopup("Success", "Informations changed.");
+        this.showPopup("Success", "Information changed.");
       } else {
-        this.showPopup("Error", "Problem change informations.");
+        this.showPopup("Error", "Problem change information.");
       }
     },
       error => {

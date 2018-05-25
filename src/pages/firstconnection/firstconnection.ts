@@ -25,7 +25,7 @@ export class FirstconnectionPage {
     },
     {
       title: "What is Wealar?",
-      description: "<b>Wealar</b> is a remote connected alarm with a weather station which can allow you to get informations of your home",
+      description: "<b>Wealar</b> is a remote connected alarm with a weather station which can allow you to get information of your home",
       image: "assets/imgs/logo_transparent.png",
     },
     {
