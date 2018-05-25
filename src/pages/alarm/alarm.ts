@@ -19,9 +19,9 @@ export class AlarmPage {
     });
   }
 
-  doDesactivate() {
+  doDeactivate() {
     let alert = this.alertCtrl.create({
-      title: 'Your alarm is desactivated',
+      title: 'Your alarm is deactivated',
       message: 'Becareful WEALAR has stopped watching your home !',
       buttons: ['OK']
     });

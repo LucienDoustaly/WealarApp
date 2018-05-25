@@ -41,7 +41,7 @@
   <ion-footer>
     <div *ngIf="alarmInfo">
       <button ion-button *ngIf="alarmInfo.activated" color="secondary" class="disconnect-button" (click)="doActivate()">Alarm STATUS : Activated</button>
-      <button ion-button *ngIf="!alarmInfo.activated" color="danger" class="disconnect-button" (click)="doDesactivate()">Alarm STATUS : Desactivated</button>
+      <button ion-button *ngIf="!alarmInfo.activated" color="danger" class="disconnect-button" (click)="doDeactivate()">Alarm STATUS : Deactivated</button>
     </div>
       <p>Tips: Swipe down to refresh !</p>
   </ion-footer>

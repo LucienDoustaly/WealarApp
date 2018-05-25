@@ -23,7 +23,7 @@ export class SettingsSensibilityPage {
   items: any = {
     'LOW': [
       {
-        message: 'In LOW MODE presence detector sensibility is desactivated.'
+        message: 'In LOW MODE presence detector sensibility is deactivated.'
       }
     ],
     'MEDIUM': [
