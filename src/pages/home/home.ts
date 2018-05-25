@@ -9,8 +9,6 @@ import 'rxjs/add/operator/map';
 })
 export class HomePage {
   weatherList: any;
-  reponse: any;
-  //todayWeather: any;
 
   constructor(public navCtrl: NavController, public dataProvider: DataProvider) {
     this.dataProvider.getWeatherList().subscribe(data => {

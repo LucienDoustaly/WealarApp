@@ -37,13 +37,37 @@ export class AlarmPage {
     alert.present();
   }
 
+  ignorePresence(){
+    this.dataProvider.ignorePresence().subscribe(allowed => {
+      if (allowed) {
+        console.log("Presence ignored");
+        let alert = this.alertCtrl.create({
+          title: 'ATTENTION !',
+          message: 'The alerte will be ignored.',
+          buttons: ['OK']
+        });
+        alert.present();
+      } else {
+        console.log("Erreur Presence ignored");
+        let alert = this.alertCtrl.create({
+          title: 'Error',
+          message: 'Unknown error',
+          buttons: ['OK']
+        });
+        alert.present();
+      }
+    },
+      error => {
+        console.log("Erreur", error);
+      });
+  }
+
   doRefresh(refresher: Refresher) {
     this.dataProvider.getAlarmData().subscribe(data => {
-      this.alarmInfo = data.alarm;
-      
+      this.alarmInfo = this.dataProvider.alarmData;
       //this.todayWeather = this.weatherList[0];
       //this.weatherList = this.weatherList.slice(1);
-      console.log('alarmInfo',this.alarmInfo);
+      console.log('alarmeInfo',this.alarmInfo);
       //console.log('todayWeather',this.todayWeather);
       
       console.log('DOREFRESH', refresher);
@@ -51,3 +75,4 @@ export class AlarmPage {
     });
   }
 }
+

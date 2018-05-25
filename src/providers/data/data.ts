@@ -87,11 +87,31 @@ export class DataProvider {
             observer.next(true);
             console.log("POST call successful value returned in body",
               val);
-            console.log("WeatherData", this.alarmData);
+            console.log("AlarmData", this.alarmData);
           },
           response => {
             console.log("POST call in error", response);
             observer.next(true);
+          },
+          () => {
+            console.log("The POST observable is now completed.");
+            observer.complete();
+          });
+    });
+  }
+
+  public ignorePresence(){
+    return Observable.create(observer => {
+      this.http.put("https://wealarapi.herokuapp.com/data/alarm",'',this.httpOptions)
+        .subscribe(
+          (val) => {
+            observer.next(true);
+            console.log("POST call successful value returned in body",
+              val);
+          },
+          response => {
+            console.log("POST call in error", response);
+            observer.next(false);
           },
           () => {
             console.log("The POST observable is now completed.");

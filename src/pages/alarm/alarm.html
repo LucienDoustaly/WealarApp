@@ -40,6 +40,7 @@
 
   <ion-footer>
     <div *ngIf="alarmInfo">
+      <button ion-button *ngIf="alarmInfo.new" color="danger" class="disconnect-button" (click)="ignorePresence()">Ignore alerte presence</button>
       <button ion-button *ngIf="alarmInfo.activated" color="secondary" class="disconnect-button" (click)="doActivate()">Alarm STATUS : Activated</button>
       <button ion-button *ngIf="!alarmInfo.activated" color="danger" class="disconnect-button" (click)="doDeactivate()">Alarm STATUS : Deactivated</button>
     </div>
