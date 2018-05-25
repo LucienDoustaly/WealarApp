@@ -11,7 +11,7 @@ import { FirstconnectionPage } from "../firstconnection/firstconnection";
 })
 export class LoginPage {
   loading: Loading;
-  registerCredentials = { username: 'Lucien', password: 'lulu' };
+  registerCredentials = { username: '5e33c802-2c7e-4716-b3ca-f1281e9c54b8', password: 'antho' };
 
   constructor(private nav: NavController, private auth: AuthServiceProvider, private alertCtrl: AlertController, private loadingCtrl: LoadingController) { }
 
