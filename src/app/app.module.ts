@@ -9,7 +9,6 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { SettingsPage } from '../pages/settings/settings';
-import { WeatherDetailsPage } from '../pages/weather-details/weather-details';
 import { SettingsSensibilityPage } from '../pages/settings-sensibility/settings-sensibility';
 import { SettingsSmsPage } from '../pages/settings-sms/settings-sms';
 import { SettingsWeatherPage } from '../pages/settings-weather/settings-weather';
@@ -37,7 +36,6 @@ import { FirstCoChangeInfoPage } from '../pages/first-co-change-info/first-co-ch
     LoginPage,
     RegisterPage,
     SettingsPage,
-    WeatherDetailsPage,
     SettingsSensibilityPage,
     SettingsSmsPage,
     SettingsWeatherPage,
@@ -63,7 +61,6 @@ import { FirstCoChangeInfoPage } from '../pages/first-co-change-info/first-co-ch
     LoginPage,
     RegisterPage,
     SettingsPage,
-    WeatherDetailsPage,
     SettingsSensibilityPage,
     SettingsSmsPage,
     SettingsWeatherPage,
