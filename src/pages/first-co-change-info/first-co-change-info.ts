@@ -19,7 +19,7 @@ export class FirstCoChangeInfoPage {
       this.showLoading('Changing informations');
       this.auth.firstCo(this.Credentials).subscribe(allowed => {
         if (allowed) {
-          this.showError("Success", "Information changed.");
+          this.showError("Success", "Informations changed.");
           this.Credentials = { username:'', password: '', confirm_password: '', userphone: '' };
           this.nav.setRoot(TabsPage);
         } else {
